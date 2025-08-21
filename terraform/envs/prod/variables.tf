@@ -1,6 +1,7 @@
 variable "aws_region" {
   description = "AWS region where resources will be created"
   type        = string
+  default     = "us-east-1"
 }
 
 variable "vpc_cidr" {
@@ -24,17 +25,17 @@ variable "private_subnets" {
 variable "cluster_name" {
   description = "Name of the EKS cluster"
   type        = string
-  default     = "scramble-store-api"
+  default     = "scramble-store-api-cluster"
 }
 
 variable "instance_type" {
   description = "EC2 instance type for EKS node group"
   type        = string
-  default     = "t4g.micro"
+  default     = "t4g.small"
 }
 
-variable "tags" {
-  description = "Common tags applied to all resources"
-  type        = map(string)
-  default     = {}
+variable "ami_type" {
+  description = "AMI type for the managed node group"
+  type        = string
+  default     = "AL2_ARM_64"
 }

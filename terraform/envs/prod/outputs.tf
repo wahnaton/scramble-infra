@@ -1,6 +1,6 @@
 output "cluster_name" {
   description = "Name of the EKS cluster"
-  value       = module.eks.cluster_id
+  value       = module.eks.cluster_name
 }
 
 output "cluster_endpoint" {
@@ -15,20 +15,20 @@ output "cluster_ca_certificate" {
 
 output "ecr_repository_url" {
   description = "URL of the ECR repository for the Medusa app image"
-  value       = module.ecr.repository_url
+  value       = aws_ecr_repository.this.repository_url
 }
 
 output "vpc_id" {
   description = "ID of the VPC"
-  value       = module.vpc.vpc_id
+  value       = aws_vpc.this.id
 }
 
 output "public_subnet_ids" {
   description = "IDs of the public subnets"
-  value       = module.vpc.public_subnet_ids
+  value       = [for s in aws_subnet.public : s.id]
 }
 
 output "private_subnet_ids" {
   description = "IDs of the private subnets"
-  value       = module.vpc.private_subnet_ids
+  value       = [for s in aws_subnet.private : s.id]
 }
