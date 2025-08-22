@@ -3,7 +3,7 @@ module "eks" {
   version = "~> 20.0"
 
   cluster_name                   = var.cluster_name
-  cluster_version                = "1.29"
+  cluster_version                = "1.30"
   vpc_id                         = aws_vpc.this.id
   subnet_ids                     = [for s in aws_subnet.private : s.id]
   enable_irsa                    = true
