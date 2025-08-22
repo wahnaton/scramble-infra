@@ -78,7 +78,7 @@ data "aws_iam_policy_document" "eks_describe" {
     effect  = "Allow"
     actions = ["eks:DescribeCluster"]
     resources = [
-      "arn:aws:eks:${data.aws_region.current.name}:${data.aws_caller_identity.current.account_id}:cluster/${var.cluster_name}"
+      "arn:aws:eks:${var.aws_region}:${data.aws_caller_identity.current.account_id}:cluster/${var.cluster_name}"
     ]
   }
 }
