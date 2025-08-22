@@ -22,14 +22,14 @@ resource "aws_subnet" "public" {
 }
 
 resource "aws_subnet" "private" {
-  count              = length(var.private_subnets)
-  vpc_id             = aws_vpc.this.id
-  cidr_block         = var.private_subnets[count.index]
-  availability_zone  = data.aws_availability_zones.available.names[count.index]
+  count             = length(var.private_subnets)
+  vpc_id            = aws_vpc.this.id
+  cidr_block        = var.private_subnets[count.index]
+  availability_zone = data.aws_availability_zones.available.names[count.index]
   tags = {
-    Name                                           = "private-${count.index}"
-    "kubernetes.io/role/internal-elb"              = "1"
-    "kubernetes.io/cluster/${var.cluster_name}"    = "shared"
+    Name                                        = "private-${count.index}"
+    "kubernetes.io/role/internal-elb"           = "1"
+    "kubernetes.io/cluster/${var.cluster_name}" = "shared"
   }
 }
 
@@ -66,7 +66,7 @@ resource "aws_route_table_association" "public" {
 }
 
 resource "aws_route_table" "private" {
-  count = length(var.private_subnets)
+  count  = length(var.private_subnets)
   vpc_id = aws_vpc.this.id
 }
 

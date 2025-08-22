@@ -76,7 +76,7 @@ resource "aws_iam_policy" "ecr_push" {
 # Minimal EKS permissions to fetch cluster details for kubeconfig/token
 data "aws_iam_policy_document" "eks_describe" {
   statement {
-    effect = "Allow"
+    effect  = "Allow"
     actions = ["eks:DescribeCluster"]
     resources = [
       "arn:aws:eks:${data.aws_region.current.name}:${data.aws_caller_identity.current.account_id}:cluster/${var.cluster_name}"

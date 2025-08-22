@@ -26,13 +26,13 @@ resource "aws_iam_role" "external_secrets" {
 }
 
 resource "aws_iam_policy" "external_secrets_read" {
-  name   = "${var.cluster_name}-external-secrets-read"
+  name = "${var.cluster_name}-external-secrets-read"
   policy = jsonencode({
     Version = "2012-10-17",
     Statement = [
       {
-        Effect   = "Allow",
-        Action   = [
+        Effect = "Allow",
+        Action = [
           "secretsmanager:GetSecretValue",
           "secretsmanager:DescribeSecret",
           "secretsmanager:ListSecrets",
@@ -41,8 +41,8 @@ resource "aws_iam_policy" "external_secrets_read" {
         Resource = "*"
       },
       {
-        Effect   = "Allow",
-        Action   = [
+        Effect = "Allow",
+        Action = [
           "ssm:GetParameter",
           "ssm:GetParameters",
           "ssm:GetParametersByPath",
