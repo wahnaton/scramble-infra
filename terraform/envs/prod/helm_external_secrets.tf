@@ -1,5 +1,3 @@
-data "aws_region" "current" {}
-
 data "aws_iam_policy_document" "external_secrets_assume" {
   statement {
     actions = ["sts:AssumeRoleWithWebIdentity"]
